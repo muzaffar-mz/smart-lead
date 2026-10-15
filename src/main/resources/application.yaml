@@ -1,3 +1,17 @@
 spring:
   application:
     name: smart-lead
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  port: 7695
+
+hugging-face:
+  url: https://router.huggingface.co/v1
+  completions: /chat/completions
+  model: "openai/gpt-oss-120b:groq"
+  temperature: 0
+  max-tokens: 1024
+  reasoning-effort: low
+  stream: false

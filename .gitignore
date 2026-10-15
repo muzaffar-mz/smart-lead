@@ -32,4 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
+
+# property file for local testing
+src/main/resources/application-local*
+
+# logs
 /logs
