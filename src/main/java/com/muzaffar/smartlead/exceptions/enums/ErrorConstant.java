@@ -7,6 +7,7 @@ import lombok.Getter;
 public enum ErrorConstant {
 
     HUGGING_FACE_EXCEPTION(-1),
+    NOT_FOUND(-10),
 
     ;
 
