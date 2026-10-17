@@ -9,10 +9,12 @@ import lombok.Getter;
 public class HFException extends BaseException {
     private final String type;
     private final String code;
+    private final int httpStatus;
 
-    public HFException(ErrorConstant errorConstant, HFErrorResponse errorResponse) {
+    public HFException(ErrorConstant errorConstant, HFErrorResponse errorResponse, int httpStatus) {
         super(errorConstant, errorResponse.message());
         this.type = errorResponse.type();
         this.code = errorResponse.code();
+        this.httpStatus = httpStatus;
     }
 }

@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "is_lead": {
+      "type": "boolean",
+      "description": "True only if the sender shows commercial intent or is a subscribed customer."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["demo-request", "pricing-inquiry", "partnership", "support", "other"],
+      "description": "Primary intent of the message."
+    },
+    "title": {
+      "type": ["string", "null"],
+      "description": "Short descriptive title, or null if not a lead."
+    },
+    "urgency": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Urgency level per the rules in the system prompt."
+    },
+    "summary": {
+      "type": ["string", "null"],
+      "description": "1-2 sentence overview of the request."
+    }
+  },
+  "required": ["is_lead", "type", "title", "urgency", "summary"],
+  "additionalProperties": false
+}

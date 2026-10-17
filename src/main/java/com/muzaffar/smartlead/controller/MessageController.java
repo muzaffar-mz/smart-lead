@@ -21,7 +21,7 @@ public class MessageController {
     @ResponseStatus(HttpStatus.CREATED)
     public BaseResponse<Void> create(@Valid @RequestBody MessageRequest request, HttpServletRequest httpRequest) {
         messageService.createMessage(request, httpRequest.getRemoteAddr());
-        return BaseResponse.success();
+        return BaseResponse.created("Thank you for your interest in our product. We will get in touch with you soon.");
     }
 
     @GetMapping("/{id}")

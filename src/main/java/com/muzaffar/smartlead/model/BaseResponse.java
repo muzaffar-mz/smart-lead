@@ -17,6 +17,10 @@ public record BaseResponse<T>(
         return new BaseResponse<>(200, "Successful", null, null);
     }
 
+    public static BaseResponse<Void> created(String message) {
+        return new BaseResponse<>(201, message, null, null);
+    }
+
     public static BaseResponse<Void> error(int code, String errorMessage) {
         return new BaseResponse<>(code, null, null, errorMessage);
     }

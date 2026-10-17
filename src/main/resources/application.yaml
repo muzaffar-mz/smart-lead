@@ -15,3 +15,5 @@ hugging-face:
   max-tokens: 1024
   reasoning-effort: low
   stream: false
+  batch-size: 50
+  permanent-statuses: 400,413,422

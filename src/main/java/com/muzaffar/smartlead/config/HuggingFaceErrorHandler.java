@@ -37,7 +37,7 @@ public class HuggingFaceErrorHandler implements RestClient.ResponseSpec.ErrorHan
             try {
                 HFErrorResponse error = jsonMapper.readValue(bodyString, HFErrorResponse.class);
                 if (error != null) {
-                    throw new HFException(ErrorConstant.HUGGING_FACE_EXCEPTION, error);
+                    throw new HFException(ErrorConstant.HUGGING_FACE_EXCEPTION, error, status.value());
                 }
             } catch (JacksonException e) {
                 log.error("HuggingFace error body could not be parsed: {}", e.getMessage(), e);

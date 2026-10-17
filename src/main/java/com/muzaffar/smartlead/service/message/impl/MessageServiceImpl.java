@@ -6,6 +6,7 @@ import com.muzaffar.smartlead.domain.repository.MessageRepository;
 import com.muzaffar.smartlead.exceptions.NotFoundException;
 import com.muzaffar.smartlead.exceptions.enums.ErrorConstant;
 import com.muzaffar.smartlead.model.request.MessageRequest;
+import com.muzaffar.smartlead.service.hgface.HuggingFaceService;
 import com.muzaffar.smartlead.service.message.MessageService;
 import com.muzaffar.smartlead.service.message.model.MessageDTO;
 import com.muzaffar.smartlead.validation.ContactUtils;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class MessageServiceImpl implements MessageService {
 
     private final MessageRepository messageRepository;
+    private final HuggingFaceService hfService;
 
     @Override
     public void createMessage(MessageRequest request, String remoteAddr) {
@@ -34,9 +36,9 @@ public class MessageServiceImpl implements MessageService {
         }
         entity.setIp(remoteAddr);
         entity.setMessage(request.message());
-        messageRepository.save(entity);
+        entity = messageRepository.save(entity);
 
-        //todo send message to hgface service
+        hfService.submitMessageAsync(MessageDTO.from(entity));
     }
 
     @Override
