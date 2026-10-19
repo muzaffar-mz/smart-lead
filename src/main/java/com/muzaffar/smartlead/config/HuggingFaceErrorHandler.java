@@ -2,6 +2,7 @@ package com.muzaffar.smartlead.config;
 
 
 import com.muzaffar.smartlead.exceptions.HFException;
+import com.muzaffar.smartlead.exceptions.RateLimitInfo;
 import com.muzaffar.smartlead.exceptions.enums.ErrorConstant;
 import com.muzaffar.smartlead.service.hgface.model.response.HFErrorResponse;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,8 @@ public class HuggingFaceErrorHandler implements RestClient.ResponseSpec.ErrorHan
             try {
                 HFErrorResponse error = jsonMapper.readValue(bodyString, HFErrorResponse.class);
                 if (error != null) {
-                    throw new HFException(ErrorConstant.HUGGING_FACE_EXCEPTION, error, status.value());
+                    throw new HFException(ErrorConstant.HUGGING_FACE_EXCEPTION, error, status.value(),
+                            RateLimitInfo.from(response.getHeaders()));
                 }
             } catch (JacksonException e) {
                 log.error("HuggingFace error body could not be parsed: {}", e.getMessage(), e);

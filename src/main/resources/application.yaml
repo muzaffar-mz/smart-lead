@@ -3,6 +3,10 @@ spring:
     name: smart-lead
   jackson:
     default-property-inclusion: non_null
+  security:
+    user:
+      name: swagger
+      password: ${SWAGGER_PASSWORD}
 
 server:
   port: 7695
@@ -15,5 +19,5 @@ hugging-face:
   max-tokens: 1024
   reasoning-effort: low
   stream: false
-  batch-size: 50
+  batch-size: 30
   permanent-statuses: 400,413,422
