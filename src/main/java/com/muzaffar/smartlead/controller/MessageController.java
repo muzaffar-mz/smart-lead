@@ -1,9 +1,11 @@
 package com.muzaffar.smartlead.controller;
 
 import com.muzaffar.smartlead.model.BaseResponse;
+import com.muzaffar.smartlead.model.PageResponse;
 import com.muzaffar.smartlead.model.request.MessageRequest;
 import com.muzaffar.smartlead.service.message.MessageService;
 import com.muzaffar.smartlead.service.message.model.MessageDTO;
+import com.muzaffar.smartlead.service.message.model.MessageFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,12 @@ public class MessageController {
     public BaseResponse<Void> create(@Valid @RequestBody MessageRequest request, HttpServletRequest httpRequest) {
         messageService.createMessage(request, httpRequest.getRemoteAddr());
         return BaseResponse.created("Thank you for your interest in our product. We will get in touch with you soon.");
+    }
+
+    @GetMapping
+    public BaseResponse<PageResponse<MessageDTO>> find(@Valid @ModelAttribute MessageFilter filter) {
+        var result = messageService.find(filter);
+        return BaseResponse.payload(PageResponse.from(result));
     }
 
     @GetMapping("/{id}")
