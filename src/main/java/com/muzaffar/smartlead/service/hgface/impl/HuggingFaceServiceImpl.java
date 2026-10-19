@@ -5,7 +5,8 @@ import com.muzaffar.smartlead.domain.entity.UsageDetails;
 import com.muzaffar.smartlead.domain.entity.enums.CompletionStatus;
 import com.muzaffar.smartlead.domain.repository.HfCompletionRepository;
 import com.muzaffar.smartlead.exceptions.HFException;
-import com.muzaffar.smartlead.service.hgface.HuggingFaceClient;
+import com.muzaffar.smartlead.service.hgface.client.HuggingFaceClient;
+import com.muzaffar.smartlead.service.hgface.HuggingFaceRateLimiter;
 import com.muzaffar.smartlead.service.hgface.HuggingFaceService;
 import com.muzaffar.smartlead.service.hgface.model.RawLeadClassificationDTO;
 import com.muzaffar.smartlead.service.hgface.model.request.CompletionRequest;
@@ -15,6 +16,7 @@ import com.muzaffar.smartlead.service.hgface.model.request.ResponseFormat;
 import com.muzaffar.smartlead.service.hgface.model.response.LeadClassificationResult;
 import com.muzaffar.smartlead.service.hgface.model.response.Message;
 import com.muzaffar.smartlead.service.hgface.model.response.Usage;
+import com.muzaffar.smartlead.service.lead.LeadService;
 import com.muzaffar.smartlead.service.message.model.MessageDTO;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Limit;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -46,6 +49,8 @@ public class HuggingFaceServiceImpl implements HuggingFaceService {
     private final HuggingFaceClient client;
     private final HfCompletionRepository completionRepository;
     private final JsonMapper jsonMapper;
+    private final LeadService leadService;
+    private final HuggingFaceRateLimiter rateLimiter;
 
 
     @Value("${hugging-face.batch-size}")
@@ -91,7 +96,7 @@ public class HuggingFaceServiceImpl implements HuggingFaceService {
     }
 
     @Override
-    @Async("hfExecutor")
+    @Async("asyncExecutor")
     public void submitMessageAsync(MessageDTO message) {
         try {
             var completion = new HfCompletion();
@@ -106,6 +111,10 @@ public class HuggingFaceServiceImpl implements HuggingFaceService {
 
     @Scheduled(fixedDelay = 60_000)
     public void processPending() {
+        if (!rateLimiter.canSendRequests()) {
+            log.info("Daily request limit exhausted, skipping run until {}", rateLimiter.getBlockedUntil());
+            return;
+        }
         var pending = completionRepository.findByStatusOrderByIdAsc(CompletionStatus.PENDING, Limit.of(batchSize));
         if (pending.isEmpty()) {
             return;
@@ -141,55 +150,8 @@ public class HuggingFaceServiceImpl implements HuggingFaceService {
         }
 
         markSuccess(completion, result);
-        //TODO lead service class async method
+        leadService.submitLeadAsync(completion.getMessageId(), lead);
         return true;
-    }
-
-    private void markSuccess(HfCompletion completion, LeadClassificationResult result) {
-        completion.setStatus(CompletionStatus.SUCCESS);
-        completion.setModel(result.model());
-        completion.setRole(result.role());
-        completion.setContent(result.content());
-        completion.setReasoning(result.reasoning());
-        completion.setUsage(toUsageDetails(result.usage()));
-
-        completionRepository.saveAndFlush(completion);
-    }
-
-
-    private UsageDetails toUsageDetails(Usage usage) {
-        if (usage == null) {
-            return null;
-        }
-        var details = new UsageDetails();
-        details.setQueueTime(usage.queueTime());
-        details.setPromptTokens(usage.promptTokens());
-        details.setPromptTime(usage.promptTime());
-        details.setCompletionTokens(usage.completionTokens());
-        details.setCompletionTime(usage.completionTime());
-        details.setTotalTokens(usage.totalTokens());
-        details.setTotalTime(usage.totalTime());
-        if (usage.completionTokensDetails() != null) {
-            details.setReasoningTokens(usage.completionTokensDetails().reasoningTokens());
-        }
-        return details;
-    }
-
-    private void markError(HfCompletion completion, String errorMessage) {
-        completion.setStatus(CompletionStatus.ERROR);
-        completion.setMessage(errorMessage);
-        completionRepository.saveAndFlush(completion);
-    }
-
-    private boolean isPermanent(Exception e) {
-        if (e instanceof HFException hf) {
-            return permanentStatuses.contains(hf.getHttpStatus());
-        }
-        if (e instanceof RestClientResponseException r) {
-            return permanentStatuses.contains(r.getStatusCode().value());
-        }
-        // the model replied, but with something we cannot map
-        return e instanceof JacksonException || e instanceof IllegalArgumentException;
     }
 
     private LeadClassificationResult classifyLead(String userMessage) {
@@ -210,5 +172,53 @@ public class HuggingFaceServiceImpl implements HuggingFaceService {
         RawLeadClassificationDTO classification = jsonMapper.readValue(message.content(), RawLeadClassificationDTO.class);
         return new LeadClassificationResult(classification, message.reasoning(), result.usage(),
                 model, message.role(), message.content());
+    }
+
+    private boolean isPermanent(Exception e) {
+        if (e instanceof HFException hf) {
+            if (hf.getHttpStatus() == HttpStatus.TOO_MANY_REQUESTS.value()) rateLimiter.registerFailure(hf.getRateLimit());
+            return permanentStatuses.contains(hf.getHttpStatus());
+        }
+        if (e instanceof RestClientResponseException r) {
+            return permanentStatuses.contains(r.getStatusCode().value());
+        }
+        // the model replied, but with something we cannot map
+        return e instanceof JacksonException || e instanceof IllegalArgumentException;
+    }
+
+    private void markSuccess(HfCompletion completion, LeadClassificationResult result) {
+        completion.setStatus(CompletionStatus.SUCCESS);
+        completion.setModel(result.model());
+        completion.setRole(result.role());
+        completion.setContent(result.content());
+        completion.setReasoning(result.reasoning());
+        completion.setUsage(toUsageDetails(result.usage()));
+
+        completionRepository.saveAndFlush(completion);
+    }
+
+    private void markError(HfCompletion completion, String errorMessage) {
+        completion.setStatus(CompletionStatus.ERROR);
+        completion.setMessage(errorMessage);
+        completionRepository.saveAndFlush(completion);
+    }
+
+
+    private UsageDetails toUsageDetails(Usage usage) {
+        if (usage == null) {
+            return null;
+        }
+        var details = new UsageDetails();
+        details.setQueueTime(usage.queueTime());
+        details.setPromptTokens(usage.promptTokens());
+        details.setPromptTime(usage.promptTime());
+        details.setCompletionTokens(usage.completionTokens());
+        details.setCompletionTime(usage.completionTime());
+        details.setTotalTokens(usage.totalTokens());
+        details.setTotalTime(usage.totalTime());
+        if (usage.completionTokensDetails() != null) {
+            details.setReasoningTokens(usage.completionTokensDetails().reasoningTokens());
+        }
+        return details;
     }
 }

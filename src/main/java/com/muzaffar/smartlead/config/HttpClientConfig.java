@@ -1,6 +1,6 @@
 package com.muzaffar.smartlead.config;
 
-import com.muzaffar.smartlead.service.hgface.HuggingFaceClient;
+import com.muzaffar.smartlead.service.hgface.client.HuggingFaceClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

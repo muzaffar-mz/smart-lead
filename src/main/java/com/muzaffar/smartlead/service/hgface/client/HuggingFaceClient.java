@@ -1,4 +1,4 @@
-package com.muzaffar.smartlead.service.hgface;
+package com.muzaffar.smartlead.service.hgface.client;
 
 
 import com.muzaffar.smartlead.service.hgface.model.request.CompletionRequest;
