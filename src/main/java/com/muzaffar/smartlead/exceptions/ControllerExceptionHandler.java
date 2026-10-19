@@ -10,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 
 import java.util.stream.Collectors;
@@ -36,6 +37,13 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public BaseResponse<Void> handleUnreadable(HttpMessageNotReadableException ex) {
         return BaseResponse.error(ErrorConstant.INVALID_REQUEST.getCode(), "Request body is missing or malformed");
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public BaseResponse<Void> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
+        return BaseResponse.error(ErrorConstant.INVALID_REQUEST.getCode(),
+                "Invalid value for parameter '%s'".formatted(ex.getName()));
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
