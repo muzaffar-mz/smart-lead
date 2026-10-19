@@ -5,8 +5,11 @@ spring:
     default-property-inclusion: non_null
   security:
     user:
-      name: swagger
+      name: ${SWAGGER_LOGIN}
       password: ${SWAGGER_PASSWORD}
+
+security:
+  api-key: ${API_KEY}
 
 server:
   port: 7695

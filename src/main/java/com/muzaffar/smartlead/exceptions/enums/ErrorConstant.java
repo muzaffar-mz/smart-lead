@@ -9,6 +9,7 @@ public enum ErrorConstant {
     HUGGING_FACE_EXCEPTION(-1),
     NOT_FOUND(-10),
     INVALID_REQUEST(-20),
+    UNAUTHORIZED(-30),
     INTERNAL_ERROR(-99),
 
     ;
