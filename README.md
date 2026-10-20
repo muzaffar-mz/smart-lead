@@ -30,10 +30,10 @@ flowchart LR
         lc --> ls[LeadService]
         cc --> cs[CompletionService]
 
-        ms -->|submitMessageAsync<br/>@Async| hf[HuggingFaceService]
+        ms -->|"submitMessageAsync (async)"| hf[HuggingFaceService]
         job([Scheduled job<br/>every 60 s]) --> hf
         hf --> rl[Rate limiter]
-        hf -->|submitLeadAsync<br/>@Async| ls
+        hf -->|"submitLeadAsync (async)"| ls
     end
 
     ms --> db[(PostgreSQL<br/>messages, hf_completions, leads)]
