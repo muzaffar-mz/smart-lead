@@ -1,0 +1,250 @@
+We’re a team of 50 engineers and we’d like to schedule a demo of your enterprise plan next week.
+What are your office hours?
+Can you send me pricing details for the Pro plan? We’re comparing tools and need to make a decision by Friday.
+I’m a student working on a project, just wanted to say your docs are really helpful.
+We’re a SaaS company interested in a partnership or integration with your platform. Let’s connect.
+How do I reset my password?
+Our CTO wants to evaluate your API for our new product. Can someone walk us through the technical capabilities?
+Just checking if you ship internationally.
+We’ve been using the free tier for 3 months and we’re ready to upgrade. Can you help us pick the right plan for 200 users?
+Your website looks great, nice design!
+I’m experiencing issues with my billing. I was charged twice this month and need this resolved ASAP.
+We're a 500-person fintech and need SSO, audit logs, and a dedicated account manager. Who can we talk to about an enterprise contract?
+Do you have a student discount?
+Our procurement team needs a formal quote and your security documentation (SOC 2, GDPR) before end of quarter.
+Hi, I just wanted to know where your company is headquartered.
+We're evaluating you against two competitors. Can you share a comparison and arrange a call this week?
+The app crashes every time I try to export a report. Please help.
+I'd like to cancel my subscription effective immediately.
+Can you tell me if you integrate with Salesforce and HubSpot? We're planning to roll this out to our 80-person sales team.
+Thanks for the quick reply earlier, everything works now!
+We're a marketing agency managing 30 clients and would like to discuss reseller or white-label pricing.
+Is there a mobile app available for Android?
+Our company is launching a new product in Q2 and we need a solution that can scale to 10,000 users. Budget is approved.
+I'm writing a blog post about CRM tools. Can I get a press kit or quote from someone on your team?
+Where can I find your terms of service?
+Please call me back at 555-0142 regarding the demo I requested yesterday. We're ready to sign this month.
+I think I found a bug in your API: the rate limit headers are missing from the response.
+Do you offer a free trial for the Business plan?
+We're a nonprofit with 15 staff members. Do you offer discounted pricing?
+Congrats on the Series B! Would love to explore how we could work together as an investor or advisor.
+I forgot which email I signed up with. Can you look it up?
+Our VP of Sales is asking for a custom contract with a 3-year commitment. Who handles that?
+Can you recommend a good tutorial for getting started?
+Looking for a vendor to replace our current tool before our contract expires in 30 days. We have 120 seats and a $60k budget.
+Your support agent was very rude to me yesterday.
+Hello, I'm a recruiter. Are you hiring any backend engineers right now?
+We need an on-premise deployment option for compliance reasons. Is that possible and what would it cost?
+How long does it take to get a refund?
+My team of 12 wants to try the Pro plan. Can we get a trial extension for two more weeks?
+Selling SEO services to boost your traffic. Reply for a free audit!
+What's the difference between the Starter and Pro plans?
+We are a government agency looking to purchase licenses for 1,000 employees. Please send procurement details.
+Can I change the email address on my account?
+Our startup just raised funding and we need to onboard 40 sales reps next month. Can we set up a call tomorrow?
+Do you have a podcast or newsletter I can subscribe to?
+I'd like to talk to someone about volume discounts. We're planning to purchase 300 licenses this quarter.
+Hey, just testing the contact form. Ignore this message.
+We're a university IT department interested in a campus-wide license. Who should we speak to?
+Can you explain how your data retention policy works?
+Please add me to your partner program. We're an integration consultancy with 25 enterprise clients.
+Selling bulk email lists, 150000 verified fintech contacts. Reply for a sample.
+I'm a student writing a thesis on fintech software. Could someone answer a few questions?
+Do you offer volume discounts above 40 seats?
+We're a retail consultancy and would like to become an implementation partner. We have 25 clients who could use your product.
+Could you explain how data export works? I'm preparing a proposal for my product lead.
+I'm a student writing a thesis on e-commerce software. Could someone answer a few questions?
+The export feature keeps failing with an error when I select more than 15 records.
+Can we schedule a call by Friday? We're ready to buy for 600 users and need a public API.
+Does your platform integrate with Google Workspace? We're considering it for our 80-person team.
+We're a 100-person e-commerce company and our Head of Operations wants a demo of the Pro plan before the contract renews.
+Our head of customer success asked me to book a demo. We have 12 seats to fill and a budget of no fixed budget yet.
+Our retail team of 100 is evaluating tools and we need an integration with Zendesk. Can someone give us a technical walkthrough?
+What's the difference between the Business and Enterprise plans? We might upgrade by Friday.
+We're replacing our current vendor before our board meeting. 2500 users, $40k, and we need webhooks. Who can talk to us?
+How much does the Starter plan cost for 300 users?
+How much does the Enterprise plan cost for 100 users?
+I was charged twice for the Business plan this month. Please refund the duplicate payment.
+I'm a student writing a thesis on real estate software. Could someone answer a few questions?
+Can you send pricing details? We're a telecom startup with 60 people and comparing options.
+We'd like to move forward with the Enterprise plan for 15 people. What are the next steps to sign a contract?
+I represent an investment firm focused on telecom. Can I get a few minutes with your procurement manager?
+The dashboard is very slow when we load more than 300 rows.
+How do I delete my account and all associated data?
+What's the difference between the Starter and Pro plans? We might upgrade this quarter.
+How much does the Starter plan cost for 450 users?
+We upgraded to the Enterprise plan but audit logs is still not available in our account.
+Selling bulk email lists, 600000 verified consulting contacts. Reply for a sample.
+We'd love to co-market with you. Our newsletter reaches 60000 travel professionals.
+Selling bulk email lists, 35000 verified real estate contacts. Reply for a sample.
+We'd like to move forward with the Starter plan for 40 people. What are the next steps to sign a contract?
+We're a 15-person healthcare company and our head of customer success wants a demo of the Pro plan before the end of the month.
+Selling bulk email lists, 8000 verified fintech contacts. Reply for a sample.
+I represent an investment firm focused on fintech. Can I get a few minutes with your VP of Sales?
+Selling bulk email lists, 450000 verified telecom contacts. Reply for a sample.
+What's the difference between the Enterprise and Starter plans? We might upgrade this quarter.
+Our Zendesk integration stopped syncing yesterday. We need this fixed before the contract renews.
+I was charged twice for the Starter plan this month. Please refund the duplicate payment.
+Please send a formal quote for 200 licenses of the Team plan. Procurement needs it within two weeks.
+The mobile app shows a blank screen after the latest update.
+Could you explain how webhooks works? I'm preparing a proposal for my VP of Sales.
+We'd love to co-market with you. Our newsletter reaches 20000 e-commerce professionals.
+Please send a formal quote for 100 licenses of the Enterprise plan. Procurement needs it tomorrow.
+Are you hiring for remote positions?
+I didn't receive the password reset email. I've checked spam.
+Our Shopify integration stopped syncing yesterday. We need this fixed tomorrow.
+We're a 20-person logistics company and our Head of Operations wants a demo of the Pro plan before the contract renews.
+How do I add a new user to our team account?
+I was charged twice for the Enterprise plan this month. Please refund the duplicate payment.
+Selling bulk email lists, 2500000 verified consulting contacts. Reply for a sample.
+Please send a formal quote for 60 licenses of the Pro plan. Procurement needs it tomorrow.
+I'm the CFO at a fintech company with 25 employees. We need single-tenant hosting and Salesforce integration before the end of the month. Can we set up a demo?
+Our company builds tools for legal services and we'd like to explore an integration with your API.
+Our Jira integration stopped syncing yesterday. We need this fixed before the contract renews.
+We'd like to move forward with the Pro plan for 25 people. What are the next steps to sign a contract?
+Would you be open to a technology partnership? We specialize in HubSpot integrations.
+I'm a student writing a thesis on healthcare software. Could someone answer a few questions?
+The dashboard is very slow when we load more than 1000 rows.
+We'd like to move forward with the Team plan for 450 people. What are the next steps to sign a contract?
+Our IT director asked me to book a demo. We have 8 seats to fill and a budget of $75k.
+We upgraded to the Business plan but audit logs is still not available in our account.
+I'm the CFO at a insurance company with 60 employees. We need SSO and Zendesk integration before our board meeting. Can we set up a demo?
+We're a small telecom business and looking at your Business plan. Is a free trial available?
+We upgraded to the Enterprise plan but SSO is still not available in our account.
+Do you support single-tenant hosting on the Enterprise plan?
+We're a 1000-person real estate company and our VP of Sales wants a demo of the Starter plan before the end of the month.
+We're a 8-person logistics company and our head of customer success wants a demo of the Pro plan by Friday.
+I'm the CFO at a insurance company with 25 employees. We need SAML and Stripe integration within two weeks. Can we set up a demo?
+Selling bulk email lists, 20000 verified energy contacts. Reply for a sample.
+The dashboard is very slow when we load more than 20 rows.
+Can we schedule a call this quarter? We're ready to buy for 200 users and need audit logs.
+The dashboard is very slow when we load more than 600 rows.
+I'm a student writing a thesis on travel software. Could someone answer a few questions?
+Just browsing, nothing specific right now.
+Our company builds tools for healthcare and we'd like to explore an integration with your API.
+Do you support single-tenant hosting on the Team plan?
+Do you have an office in Europe?
+Great product, keep up the good work!
+We'd love to co-market with you. Our newsletter reaches 800 media professionals.
+Where can I find your privacy policy?
+Selling bulk email lists, 200000 verified manufacturing contacts. Reply for a sample.
+Can we schedule a call by Friday? We're ready to buy for 40 users and need single-tenant hosting.
+We're a 600-person e-commerce company and our IT director wants a demo of the Enterprise plan before our board meeting.
+Hi, is this the right place to contact a journalist about a story?
+Please send a formal quote for 2500 licenses of the Pro plan. Procurement needs it by the end of Q4.
+Just wanted to say thanks for the quick support yesterday.
+We're a travel consultancy and would like to become an implementation partner. We have 200 clients who could use your product.
+Would you be open to a technology partnership? We specialize in Shopify integrations.
+Could you explain how data export works? I'm preparing a proposal for my procurement manager.
+Our CTO asked me to book a demo. We have 80 seats to fill and a budget of $75k.
+We're a 150-person consulting company and our CTO wants a demo of the Starter plan next week.
+We're a retail consultancy and would like to become an implementation partner. We have 80 clients who could use your product.
+We upgraded to the Team plan but data export is still not available in our account.
+We're a 300-person consulting company and our head of customer success wants a demo of the Starter plan by the end of Q4.
+Would you be open to a technology partnership? We specialize in Salesforce integrations.
+We're replacing our current vendor next week. 80 users, no fixed budget yet, and we need SSO. Who can talk to us?
+Do you support single-tenant hosting on the Business plan?
+Please send a formal quote for 1000 licenses of the Team plan. Procurement needs it tomorrow.
+I can't log in to my account since this morning. Please help.
+Looking for a quote for 200 users, no rush, just gathering information for next year's budget.
+I'm a student writing a thesis on gaming software. Could someone answer a few questions?
+We're a small edtech business and looking at your Starter plan. Is a free trial available?
+Our Jira integration stopped syncing yesterday. We need this fixed within two weeks.
+We're a 35-person energy company and our CFO wants a demo of the Starter plan within two weeks.
+Our Salesforce integration stopped syncing yesterday. We need this fixed this quarter.
+Is there a discount for annual billing on the Pro plan?
+Do you offer volume discounts above 600 seats?
+Our insurance team of 300 is evaluating tools and we need an integration with Microsoft Teams. Can someone give us a technical walkthrough?
+Selling bulk email lists, 20000 verified real estate contacts. Reply for a sample.
+I need to change the billing email on our account. How do I do that?
+I love the new design of your website.
+We'd love to co-market with you. Our newsletter reaches 15000 insurance professionals.
+Our company builds tools for e-commerce and we'd like to explore an integration with your API.
+The export feature keeps failing with an error when I select more than 150 records.
+We're a insurance consultancy and would like to become an implementation partner. We have 35 clients who could use your product.
+Is there a discount for annual billing on the Team plan?
+Boost your ranking with our SEO packages, starting at $99. Click here!
+We'd love to co-market with you. Our newsletter reaches 60000 retail professionals.
+Our Google Workspace integration stopped syncing yesterday. We need this fixed before the contract renews.
+Can you send pricing details? We're a fintech startup with 100 people and comparing options.
+Is there a status page where I can check for outages? Nothing is loading for us.
+Our Google Workspace integration stopped syncing yesterday. We need this fixed this quarter.
+Our Google Workspace integration stopped syncing yesterday. We need this fixed by Friday.
+Can you send pricing details? We're a insurance startup with 200 people and comparing options.
+Our VP of Sales asked me to book a demo. We have 8 seats to fill and a budget of approved budget.
+Could you explain how custom reporting works? I'm preparing a proposal for my Head of Operations.
+We'd like to move forward with the Enterprise plan for 40 people. What are the next steps to sign a contract?
+Could you explain how webhooks works? I'm preparing a proposal for my Head of Operations.
+Do you offer volume discounts above 2500 seats?
+The export feature keeps failing with an error when I select more than 100 records.
+We'd love to co-market with you. Our newsletter reaches 2000 travel professionals.
+The dashboard is very slow when we load more than 150 rows.
+I'm the IT director at a retail company with 20 employees. We need custom reporting and Salesforce integration before the contract renews. Can we set up a demo?
+Our procurement manager asked me to book a demo. We have 150 seats to fill and a budget of approved budget.
+Can I get a copy of your logo for a blog post I'm writing?
+We're a fintech consultancy and would like to become an implementation partner. We have 25 clients who could use your product.
+Does your platform integrate with Microsoft Teams? We're considering it for our 450-person team.
+Could you explain how SSO works? I'm preparing a proposal for my procurement manager.
+We're replacing our current vendor tomorrow. 35 users, no fixed budget yet, and we need a public API. Who can talk to us?
+Our telecom team of 600 is evaluating tools and we need an integration with Shopify. Can someone give us a technical walkthrough?
+The dashboard is very slow when we load more than 60 rows.
+The dashboard is very slow when we load more than 2500 rows.
+What's the difference between the Pro and Pro plans? We might upgrade before the end of the month.
+The export feature keeps failing with an error when I select more than 60 records.
+We upgraded to the Pro plan but data export is still not available in our account.
+Testing the form, please ignore.
+Selling bulk email lists, 1000000 verified energy contacts. Reply for a sample.
+Can we schedule a call next week? We're ready to buy for 12 users and need custom reporting.
+We upgraded to the Team plan but a public API is still not available in our account.
+Do you offer volume discounts above 35 seats?
+We're a 60-person legal services company and our product lead wants a demo of the Starter plan within two weeks.
+Please send a formal quote for 2500 licenses of the Pro plan. Procurement needs it within two weeks.
+We're a edtech consultancy and would like to become an implementation partner. We have 150 clients who could use your product.
+Could you explain how data export works? I'm preparing a proposal for my CTO.
+The export feature keeps failing with an error when I select more than 1000 records.
+Can you send pricing details? We're a gaming startup with 1000 people and comparing options.
+Do you support data export on the Team plan?
+We're organizing a legal services conference and would like to invite you as a sponsor or speaker.
+We'd like to move forward with the Starter plan for 80 people. What are the next steps to sign a contract?
+We'd like to move forward with the Team plan for 20 people. What are the next steps to sign a contract?
+Our Google Workspace integration stopped syncing yesterday. We need this fixed tomorrow.
+I'm a student writing a thesis on retail software. Could someone answer a few questions?
+Does your platform integrate with Microsoft Teams? We're considering it for our 300-person team.
+Selling bulk email lists, 15000 verified real estate contacts. Reply for a sample.
+Our head of customer success asked me to book a demo. We have 15 seats to fill and a budget of $25k.
+We upgraded to the Enterprise plan but custom reporting is still not available in our account.
+Is there a discount for annual billing on the Starter plan?
+We upgraded to the Starter plan but data export is still not available in our account.
+We're a 8-person logistics company and our IT director wants a demo of the Pro plan tomorrow.
+Where can I download my invoices?
+We're replacing our current vendor next week. 80 users, approved budget, and we need SAML. Who can talk to us?
+Is there a discount for annual billing on the Enterprise plan?
+Can we schedule a call tomorrow? We're ready to buy for 450 users and need a public API.
+Could you explain how a sandbox environment works? I'm preparing a proposal for my product lead.
+We're a 20-person telecom company and our VP of Sales wants a demo of the Business plan before the contract renews.
+We upgraded to the Business plan but SSO is still not available in our account.
+We're organizing a logistics conference and would like to invite you as a sponsor or speaker.
+I was charged twice for the Team plan this month. Please refund the duplicate payment.
+Our edtech team of 60 is evaluating tools and we need an integration with Salesforce. Can someone give us a technical walkthrough?
+We'd like to move forward with the Team plan for 60 people. What are the next steps to sign a contract?
+Do you offer volume discounts above 80 seats?
+Would you be open to a technology partnership? We specialize in Zendesk integrations.
+Can we schedule a call tomorrow? We're ready to buy for 200 users and need webhooks.
+Please cancel my subscription and confirm by email.
+How much does the Starter plan cost for 25 users?
+Please send a formal quote for 25 licenses of the Enterprise plan. Procurement needs it within two weeks.
+Can we schedule a call before our board meeting? We're ready to buy for 40 users and need data export.
+We're a small gaming business and looking at your Starter plan. Is a free trial available?
+We'd love to co-market with you. Our newsletter reaches 800 healthcare professionals.
+The dashboard is very slow when we load more than 25 rows.
+Is there a discount for annual billing on the Business plan?
+Please send a formal quote for 40 licenses of the Pro plan. Procurement needs it within two weeks.
+Could you explain how custom reporting works? I'm preparing a proposal for my procurement manager.
+Do you have a referral program for existing customers?
+Can we schedule a call this quarter? We're ready to buy for 2500 users and need single-tenant hosting.
+Looking for a quote for 15 users, no rush, just gathering information for next year's budget.
+Our logistics team of 150 is evaluating tools and we need an integration with Zendesk. Can someone give us a technical walkthrough?
+We're a small consulting business and looking at your Business plan. Is a free trial available?
+The export feature keeps failing with an error when I select more than 8 records.
+We're a energy consultancy and would like to become an implementation partner. We have 60 clients who could use your product.
+Does your platform integrate with Microsoft Teams? We're considering it for our 35-person team.

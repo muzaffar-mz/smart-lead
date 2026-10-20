@@ -40,6 +40,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  */
 @SpringBootTest(properties = {
         "security.api-key=" + AbstractIntegrationTest.API_KEY,
+        "security.test-key=" + AbstractIntegrationTest.TEST_KEY,
         "spring.security.user.name=" + AbstractIntegrationTest.SWAGGER_USER,
         "spring.security.user.password=" + AbstractIntegrationTest.SWAGGER_PASSWORD,
         "hugging-face.token=test-token"
@@ -48,10 +49,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 public abstract class AbstractIntegrationTest extends AbstractTestcontainers {
 
     public static final String API_KEY = "test-api-key";
+    public static final String TEST_KEY = "test-test-key";
     public static final String SWAGGER_USER = "test-user";
     public static final String SWAGGER_PASSWORD = "test-password";
 
     protected static final String API_KEY_HEADER = "X-API-KEY";
+    protected static final String TEST_KEY_HEADER = "X-TEST-KEY";
 
     @Autowired
     protected MockMvc mockMvc;

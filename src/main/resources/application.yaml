@@ -33,6 +33,7 @@ spring:
 
 security:
   api-key: ${API_KEY}
+  test-key: ${TEST_KEY:} # empty disables /api/v1/test/**
 
 server:
   port: ${PORT:7695} # Railway injects PORT; local stays 7695

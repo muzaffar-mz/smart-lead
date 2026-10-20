@@ -106,6 +106,7 @@ The application reads these environment variables:
 | `SWAGGER_LOGIN` | yes | | Swagger UI user name |
 | `SWAGGER_PASSWORD` | yes | | Swagger UI password |
 | `HUGGING_FACE_TOKEN` | yes | | Hugging Face access token |
+| `TEST_KEY` | no | empty (endpoint disabled) | Value for the `X-TEST-KEY` header of `/api/v1/test/**` |
 | `DATABASE_URL` | no | `jdbc:postgresql://localhost:5432/smart-lead` | JDBC URL |
 | `POSTGRES_USER` | no | `postgres` | Database user |
 | `POSTGRES_PASSWORD` | no | `postgres` | Database password |
@@ -171,6 +172,7 @@ and the OpenAPI document at `/v3/api-docs`.
 | `GET /api/v1/completions` | Search completions (status, message id, date range; paged) |
 | `GET /api/v1/completions/{id}` | One completion |
 | `GET /api/v1/completions/message/{messageId}` | The completion of a message |
+| `GET /api/v1/test/seed-messages?count=10` | Submits `count` (1-1000, default 10) test messages. Needs `X-API-KEY` and `X-TEST-KEY` |
 
 List endpoints take `page` (default 0), `size` (default 100, max 5000), `sortBy` and `direction` (`asc` or `desc`).
 Every response is wrapped in `BaseResponse`: the data is in `payload`, and errors have a negative `code`
