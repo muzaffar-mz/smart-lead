@@ -14,9 +14,18 @@ spring:
       name: ${SWAGGER_LOGIN}
       password: ${SWAGGER_PASSWORD}
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/smart-lead}
-    username: ${SPRING_DATASOURCE_USERNAME:postgres}
-    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    type: com.zaxxer.hikari.HikariDataSource
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/smart-lead}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 12
+      idle-timeout: 30000
+      max-lifetime: 2000000
+      connection-timeout: 30000
+      pool-name: HikariDbPool
+      auto-commit: true
   http:
     clients:
       connect-timeout: 120s
