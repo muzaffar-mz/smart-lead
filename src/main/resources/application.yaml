@@ -36,6 +36,7 @@ security:
 
 server:
   port: ${PORT:7695} # Railway injects PORT; local stays 7695
+  forward-headers-strategy: framework
 
 hugging-face:
   url: https://router.huggingface.co/v1
