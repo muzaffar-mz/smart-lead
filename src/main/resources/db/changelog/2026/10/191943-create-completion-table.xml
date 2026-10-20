@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="003-create-completion-table" author="mmuratov">
+        <createTable tableName="hf_completions">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="message_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_message_id" referencedTableName="messages" referencedColumnNames="id" unique="true"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="message" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="model" type="VARCHAR(255)"/>
+            <column name="role" type="VARCHAR(255)"/>
+            <column name="content" type="TEXT"/>
+            <column name="reasoning" type="TEXT"/>
+            <column name="queue_time" type="DOUBLE PRECISION"/>
+            <column name="prompt_tokens" type="INTEGER"/>
+            <column name="prompt_time" type="DOUBLE PRECISION"/>
+            <column name="completion_tokens" type="INTEGER"/>
+            <column name="completion_time" type="DOUBLE PRECISION"/>
+            <column name="total_tokens" type="INTEGER"/>
+            <column name="total_time" type="DOUBLE PRECISION"/>
+            <column name="reasoning_tokens" type="INTEGER"/>
+
+            <column name="date_created" type="TIMESTAMP" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_updated" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex tableName="hf_completions" indexName="idx_hf_completions_status_id">
+            <column name="status"/>
+            <column name="id"/>
+        </createIndex>
+
+        <createIndex tableName="hf_completions" indexName="idx_hf_completions_message_id">
+            <column name="message_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
