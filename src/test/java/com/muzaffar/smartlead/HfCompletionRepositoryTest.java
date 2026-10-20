@@ -139,6 +139,35 @@ class HfCompletionRepositoryTest extends AbstractTestcontainers {
         assertThat(actual).isEmpty();
     }
 
+    @Test
+    void findByMessageIdReturnsTheCompletionOfThatMessage() {
+        // Given
+        saveCompletion(CompletionStatus.PENDING, "other message");
+        var expected = saveCompletion(CompletionStatus.SUCCESS, "wanted message");
+        flushAndClear();
+
+        //When
+        var actual = underTest.findByMessageId(expected.getMessageId());
+
+        //Then
+        assertThat(actual).isPresent();
+        assertThat(actual.get().getId()).isEqualTo(expected.getId());
+        assertThat(actual.get().getMessage()).isEqualTo("wanted message");
+    }
+
+    @Test
+    void findByMessageIdIsEmptyWhenTheMessageHasNoCompletion() {
+        // Given
+        var message = messageRepository.save(createMessage(FAKER.internet().safeEmailAddress(), "no completion"));
+        flushAndClear();
+
+        //When
+        var actual = underTest.findByMessageId(message.getId());
+
+        //Then
+        assertThat(actual).isEmpty();
+    }
+
     private HfCompletion saveCompletion(CompletionStatus status, String text) {
         var message = messageRepository.save(createMessage(FAKER.internet().safeEmailAddress(), text));
 
