@@ -8,20 +8,30 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+    open-in-view: false
   security:
     user:
       name: ${SWAGGER_LOGIN}
       password: ${SWAGGER_PASSWORD}
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/smart-lead}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+  http:
+    clients:
+      connect-timeout: 120s
+      read-timeout: 120s
 
 security:
   api-key: ${API_KEY}
 
 server:
-  port: 7695
+  port: ${PORT:7695} # Railway injects PORT; local stays 7695
 
 hugging-face:
   url: https://router.huggingface.co/v1
   completions: /chat/completions
+  token: ${HUGGING_FACE_TOKEN}
   model: "openai/gpt-oss-120b:groq"
   temperature: 0
   max-tokens: 1024
