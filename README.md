@@ -86,7 +86,15 @@ The Maven wrapper (`./mvnw`) is included, so Maven does not need to be installed
 
 ## Setup
 
-### 1. Start PostgreSQL
+### 1. Clone
+
+```bash
+git clone https://github.com/muzaffar-mz/smart-lead.git
+cd smart-lead
+java -version   # must print 25
+```
+
+### 2. Start PostgreSQL
 
 ```bash
 docker run -d --name smart-lead-db \
@@ -94,9 +102,9 @@ docker run -d --name smart-lead-db \
   -p 5432:5432 postgres:17-alpine
 ```
 
-The tables are created by Liquibase when the application starts.
+Port 5432 must be free. To start over later: `docker rm -f smart-lead-db`.
 
-### 2. Configure
+### 3. Configure
 
 The application reads these environment variables:
 
@@ -128,22 +136,38 @@ hugging-face:
 
 Never commit tokens.
 
-### 3. Run
+### 4. Build
+
+```bash
+./mvnw clean package -DskipTests
+```
+
+This compiles the code and creates `target/smart-lead-0.0.1-SNAPSHOT.jar`.
+Leave out `-DskipTests` to run the tests as well (Docker must be running, see [Tests](#tests)).
+
+### 5. Run
+
+With environment variables:
 
 ```bash
 export API_KEY=local-api-key SWAGGER_LOGIN=swagger SWAGGER_PASSWORD=swagger HUGGING_FACE_TOKEN=<token>
-./mvnw spring-boot:run
+java -jar target/smart-lead-0.0.1-SNAPSHOT.jar
 ```
 
-Or with the `local` profile file from above:
+Or with the `local` profile file from step 3:
 
 ```bash
-./mvnw spring-boot:run -Dspring-boot.run.profiles=local
+java -jar target/smart-lead-0.0.1-SNAPSHOT.jar --spring.profiles.active=local
 ```
 
-The application listens on <http://localhost:7695>.
+During development you can skip the build step and start it with Maven instead:
+`./mvnw spring-boot:run` (add `-Dspring-boot.run.profiles=local` for the profile).
 
-### 4. Try it
+The application listens on <http://localhost:7695>. Check it with
+`curl http://localhost:7695/actuator/health`, which should contain `"status":"UP"`.
+On the first start Liquibase creates the tables.
+
+### 6. Try it
 
 ```bash
 curl -X POST http://localhost:7695/api/v1/messages \
