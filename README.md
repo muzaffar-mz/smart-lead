@@ -180,9 +180,19 @@ curl -H 'X-API-KEY: local-api-key' http://localhost:7695/api/v1/leads
 
 After the next scheduled run (up to a minute) the message appears as a lead if the model classified it as one.
 
+## Web UI
+
+Open <http://localhost:7695/>. The main page is a public contact form (it posts to `POST /api/v1/messages`, which needs no key).
+The **Admin** button in the top right asks for the same login and password as Swagger (`SWAGGER_LOGIN` / `SWAGGER_PASSWORD`).
+After a successful login the leads, messages and completions views open, with filters and a side panel that shows the
+message and model answer behind each row. The files are plain HTML, CSS and JavaScript in `src/main/resources/static`.
+
+`POST /api/public/admin/login` checks the login and returns the `API_KEY`, which the page keeps in the browser tab
+(`sessionStorage`) and sends as `X-API-KEY`. There is no rate limit on the login yet.
+
 ## API
 
-All endpoints require the `X-API-KEY` header, except `/actuator/health`.
+All endpoints require the `X-API-KEY` header, except `/actuator/health`, `POST /api/v1/messages` (the public contact form) and the admin login.
 Swagger UI is at `/swagger-ui.html` (HTTP Basic with `SWAGGER_LOGIN` / `SWAGGER_PASSWORD`),
 and the OpenAPI document at `/v3/api-docs`.
 

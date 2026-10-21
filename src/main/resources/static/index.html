@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Lead</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Cpath d='M9 17l5 5 9-12' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">&#10003;</span> Smart Lead</div>
+    <nav class="tabs" id="tabs" hidden>
+      <button data-tab="leads" class="active">Leads</button>
+      <button data-tab="messages">Messages</button>
+      <button data-tab="completions">Completions</button>
+    </nav>
+    <div class="session">
+      <button id="admin-btn" class="ghost">Admin</button>
+      <button id="logout-btn" class="ghost" hidden>Log out</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats" id="stats" hidden></section>
+
+    <section id="view-leads" class="view">
+      <div class="toolbar">
+        <select id="lead-type"><option value="">All types</option></select>
+        <select id="lead-urgency"><option value="">Any urgency</option></select>
+        <select id="lead-sort">
+          <option value="id|desc">Newest first</option>
+          <option value="id|asc">Oldest first</option>
+          <option value="urgency|asc">Urgency</option>
+          <option value="type|asc">Type</option>
+        </select>
+        <button class="ghost" data-refresh>Refresh</button>
+      </div>
+      <div id="leads-list" class="cards"></div>
+    </section>
+
+    <section id="view-messages" class="view">
+      <div class="toolbar">
+        <input id="msg-email" placeholder="Email contains…">
+        <input id="msg-phone" placeholder="Phone contains…">
+        <button class="ghost" data-refresh>Refresh</button>
+      </div>
+      <div id="messages-list" class="table-wrap"></div>
+    </section>
+
+    <section id="view-completions" class="view">
+      <div class="toolbar">
+        <select id="cmp-status">
+          <option value="">Any status</option>
+          <option>PENDING</option><option>SUCCESS</option><option>ERROR</option>
+        </select>
+        <button class="ghost" data-refresh>Refresh</button>
+      </div>
+      <div id="completions-list" class="table-wrap"></div>
+    </section>
+
+    <section id="view-submit" class="view active">
+      <form id="submit-form" class="panel">
+        <h2>Get in touch</h2>
+        <p class="muted">Leave your email or phone number and a short message. We will get back to you soon.</p>
+        <label>Email or phone
+          <input id="sub-contact" required placeholder="jane@acme.com or +1 555 123 4567">
+        </label>
+        <label>Message
+          <textarea id="sub-message" rows="5" required placeholder="Hi, we would like a demo for 50 users."></textarea>
+        </label>
+        <div class="row">
+          <button type="submit" class="primary">Send</button>
+          <span id="sub-result" class="muted"></span>
+        </div>
+      </form>
+    </section>
+
+    <div class="pager" id="pager" hidden></div>
+  </main>
+
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-head"><h3 id="drawer-title"></h3><button class="ghost" id="drawer-close">Close</button></div>
+    <div id="drawer-body"></div>
+  </aside>
+  <div id="scrim" class="scrim"></div>
+
+  <dialog id="login-dialog">
+    <form method="dialog" id="login-form">
+      <h3>Admin login</h3>
+      <p class="muted">Same login and password as Swagger.</p>
+      <input id="login-user" placeholder="Login" autocomplete="username" required>
+      <input id="login-pass" type="password" placeholder="Password" autocomplete="current-password" required>
+      <p id="login-error" class="error" role="alert"></p>
+      <div class="row end">
+        <button type="button" class="ghost" id="login-cancel">Cancel</button>
+        <button type="submit" class="primary">Log in</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

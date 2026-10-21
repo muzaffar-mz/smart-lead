@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -43,7 +44,7 @@ public class SecurityConfig {
                 .build();
     }
 
-    /** Everything else needs a valid X-API-KEY header, except the health probe. */
+    /** Everything else needs a valid X-API-KEY header, except the health probe, the web page, the contact form and the admin login. */
     @Bean
     @Order(2)
     SecurityFilterChain apiFilterChain(HttpSecurity http, JsonMapper jsonMapper,
@@ -52,6 +53,8 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/actuator/health/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/", "/index.html", "/assets/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/messages", "/api/public/admin/login").permitAll()
                         .requestMatchers("/api/v1/test/**").access((authentication, context) ->
                                 new AuthorizationDecision(isApiClient(authentication.get())
                                         && matches(testKey, context.getRequest().getHeader(TEST_KEY_HEADER))))

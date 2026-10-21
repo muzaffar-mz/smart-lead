@@ -36,10 +36,15 @@ class SecurityIntegrationTest extends AbstractIntegrationTest {
         mockMvc.perform(get("/api/v1/messages/1")).andExpect(status().isUnauthorized());
         mockMvc.perform(get("/api/v1/leads")).andExpect(status().isUnauthorized());
         mockMvc.perform(get("/api/v1/leads/1")).andExpect(status().isUnauthorized());
+        mockMvc.perform(get("/api/v1/completions")).andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void theContactFormIsOpenToEveryone() throws Exception {
         mockMvc.perform(post("/api/v1/messages")
                         .contentType("application/json")
                         .content("{\"contact\":\"john@acme.com\",\"message\":\"hello\"}"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isCreated());
     }
 
     @Test
@@ -52,6 +57,14 @@ class SecurityIntegrationTest extends AbstractIntegrationTest {
         mockMvc.perform(get("/actuator/health"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("UP"));
+    }
+
+    @Test
+    void webUiNeedsNoKeyButItsApiCallsDo() throws Exception {
+        mockMvc.perform(get("/")).andExpect(status().isOk());
+        mockMvc.perform(get("/assets/app.js")).andExpect(status().isOk());
+        mockMvc.perform(get("/assets/app.css")).andExpect(status().isOk());
+        mockMvc.perform(get("/api/v1/leads")).andExpect(status().isUnauthorized());
     }
 
     @Test
