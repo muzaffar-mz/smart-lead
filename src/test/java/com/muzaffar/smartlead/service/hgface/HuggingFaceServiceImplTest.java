@@ -7,7 +7,6 @@ import com.muzaffar.smartlead.exceptions.HFException;
 import com.muzaffar.smartlead.exceptions.RateLimitInfo;
 import com.muzaffar.smartlead.exceptions.enums.ErrorConstant;
 import com.muzaffar.smartlead.service.hgface.client.HuggingFaceClient;
-import com.muzaffar.smartlead.service.hgface.impl.HuggingFaceServiceImpl;
 import com.muzaffar.smartlead.service.hgface.model.RawLeadClassificationDTO;
 import com.muzaffar.smartlead.service.hgface.model.request.CompletionRequest;
 import com.muzaffar.smartlead.service.hgface.model.response.Choice;
@@ -16,7 +15,7 @@ import com.muzaffar.smartlead.service.hgface.model.response.HFErrorResponse;
 import com.muzaffar.smartlead.service.hgface.model.response.Message;
 import com.muzaffar.smartlead.service.hgface.model.response.Usage;
 import com.muzaffar.smartlead.service.lead.LeadService;
-import com.muzaffar.smartlead.service.message.model.MessageDTO;
+import com.muzaffar.smartlead.service.message.MessageDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -58,11 +57,11 @@ class HuggingFaceServiceImplTest {
     @Mock
     private HuggingFaceRateLimiter rateLimiter;
 
-    private HuggingFaceServiceImpl underTest;
+    private HuggingFaceService underTest;
 
     @BeforeEach
     void setUp() {
-        underTest = new HuggingFaceServiceImpl(client, completionRepository, JsonMapper.builder().build(), leadService, rateLimiter);
+        underTest = new HuggingFaceService(client, completionRepository, JsonMapper.builder().build(), leadService, rateLimiter);
         ReflectionTestUtils.setField(underTest, "batchSize", 30);
         ReflectionTestUtils.setField(underTest, "permanentStatuses", Set.of(400, 413, 422));
         ReflectionTestUtils.setField(underTest, "model", "test-model");

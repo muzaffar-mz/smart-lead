@@ -2,7 +2,6 @@ package com.muzaffar.smartlead.service.test;
 
 import com.muzaffar.smartlead.model.request.MessageRequest;
 import com.muzaffar.smartlead.service.message.MessageService;
-import com.muzaffar.smartlead.service.test.impl.TestServiceImpl;
 import com.muzaffar.smartlead.validation.ContactUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,8 +28,8 @@ class TestServiceImplTest {
     @Captor
     private ArgumentCaptor<MessageRequest> requestCaptor;
 
-    private TestServiceImpl serviceWith(String phrases) {
-        return new TestServiceImpl(messageService, new ByteArrayResource(phrases.getBytes()));
+    private TestService serviceWith(String phrases) {
+        return new TestService(messageService, new ByteArrayResource(phrases.getBytes()));
     }
 
     @Test

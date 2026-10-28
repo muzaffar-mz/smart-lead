@@ -5,9 +5,6 @@ import com.muzaffar.smartlead.domain.repository.MessageRepository;
 import com.muzaffar.smartlead.exceptions.NotFoundException;
 import com.muzaffar.smartlead.model.request.MessageRequest;
 import com.muzaffar.smartlead.service.hgface.HuggingFaceService;
-import com.muzaffar.smartlead.service.message.impl.MessageServiceImpl;
-import com.muzaffar.smartlead.service.message.model.MessageDTO;
-import com.muzaffar.smartlead.service.message.model.MessageFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -36,11 +33,11 @@ class MessageServiceImplTest {
     @Mock
     private HuggingFaceService hfService;
 
-    private MessageServiceImpl underTest;
+    private MessageService underTest;
 
     @BeforeEach
     void setUp() {
-        underTest = new MessageServiceImpl(messageRepository, hfService);
+        underTest = new MessageService(messageRepository, hfService);
     }
 
     @Captor

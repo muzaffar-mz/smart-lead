@@ -6,7 +6,7 @@ import com.muzaffar.smartlead.service.test.TestService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
-import com.muzaffar.smartlead.service.test.model.TestMessagesRequest;
+import com.muzaffar.smartlead.service.test.TestMessagesRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

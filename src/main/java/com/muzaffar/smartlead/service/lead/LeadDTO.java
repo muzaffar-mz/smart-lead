@@ -1,4 +1,4 @@
-package com.muzaffar.smartlead.service.lead.model;
+package com.muzaffar.smartlead.service.lead;
 
 import com.muzaffar.smartlead.domain.entity.Lead;
 import com.muzaffar.smartlead.domain.entity.enums.LeadType;

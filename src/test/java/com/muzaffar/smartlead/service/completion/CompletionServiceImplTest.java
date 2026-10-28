@@ -5,9 +5,6 @@ import com.muzaffar.smartlead.domain.entity.UsageDetails;
 import com.muzaffar.smartlead.domain.entity.enums.CompletionStatus;
 import com.muzaffar.smartlead.domain.repository.HfCompletionRepository;
 import com.muzaffar.smartlead.exceptions.NotFoundException;
-import com.muzaffar.smartlead.service.completion.impl.CompletionServiceImpl;
-import com.muzaffar.smartlead.service.completion.model.CompletionDTO;
-import com.muzaffar.smartlead.service.completion.model.CompletionFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,11 +29,11 @@ class CompletionServiceImplTest {
 
     @Mock
     private HfCompletionRepository completionRepository;
-    private CompletionServiceImpl underTest;
+    private CompletionService underTest;
 
     @BeforeEach
     void setUp() {
-        underTest = new CompletionServiceImpl(completionRepository);
+        underTest = new CompletionService(completionRepository);
     }
 
     @Test

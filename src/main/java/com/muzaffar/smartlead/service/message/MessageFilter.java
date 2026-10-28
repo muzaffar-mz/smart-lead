@@ -1,4 +1,4 @@
-package com.muzaffar.smartlead.service.message.model;
+package com.muzaffar.smartlead.service.message;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Max;

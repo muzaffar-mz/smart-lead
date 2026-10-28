@@ -4,7 +4,7 @@ import com.muzaffar.smartlead.AbstractIntegrationTest;
 import com.muzaffar.smartlead.domain.entity.enums.CompletionStatus;
 import com.muzaffar.smartlead.exceptions.HFException;
 import com.muzaffar.smartlead.exceptions.enums.ErrorConstant;
-import com.muzaffar.smartlead.service.hgface.impl.HuggingFaceServiceImpl;
+import com.muzaffar.smartlead.service.hgface.HuggingFaceService;
 import com.muzaffar.smartlead.service.hgface.model.request.CompletionRequest;
 import com.muzaffar.smartlead.service.hgface.model.response.Choice;
 import com.muzaffar.smartlead.service.hgface.model.response.CompletionResponse;
@@ -36,7 +36,7 @@ class MessageToLeadFlowIntegrationTest extends AbstractIntegrationTest {
             + "\"urgency\":\"low\",\"summary\":\"Not a real inquiry\"}";
 
     @Autowired
-    private HuggingFaceServiceImpl huggingFaceService;
+    private HuggingFaceService huggingFaceService;
 
     private static CompletionResponse modelAnswer(String content) {
         return new CompletionResponse(

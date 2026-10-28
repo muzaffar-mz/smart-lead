@@ -1,4 +1,4 @@
-package com.muzaffar.smartlead.service.completion.model;
+package com.muzaffar.smartlead.service.completion;
 
 import com.muzaffar.smartlead.domain.entity.HfCompletion;
 import com.muzaffar.smartlead.domain.entity.enums.CompletionStatus;

@@ -1,5 +1,6 @@
 package com.muzaffar.smartlead.service.completion.model;
 
+import com.muzaffar.smartlead.service.completion.CompletionFilter;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Sort;
 

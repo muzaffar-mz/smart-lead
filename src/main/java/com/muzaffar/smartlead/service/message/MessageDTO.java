@@ -1,4 +1,4 @@
-package com.muzaffar.smartlead.service.message.model;
+package com.muzaffar.smartlead.service.message;
 
 import com.muzaffar.smartlead.domain.entity.Message;
 

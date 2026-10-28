@@ -1,5 +1,6 @@
 package com.muzaffar.smartlead.service.message.model;
 
+import com.muzaffar.smartlead.service.message.MessageFilter;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Sort;
 
