@@ -30,6 +30,16 @@ spring:
     clients:
       connect-timeout: 120s
       read-timeout: 120s
+  ai:
+    openai:
+      base-url: https://router.huggingface.co/v1
+      api-key: ${HUGGING_FACE_TOKEN}
+      chat:
+        model: openai/gpt-oss-120b:groq
+        temperature: 0
+        max-completion-tokens: 1024
+        reasoning-effort: low
+        max-retries: 1
 
 security:
   api-key: ${API_KEY}
