@@ -1,1 +1,38 @@
-services: { }
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: smart-lead
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d smart-lead"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Only started with: docker compose --profile app up --build
+  app:
+    profiles: ["app"]
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "7695:7695"
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/smart-lead
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      SWAGGER_LOGIN: ${SWAGGER_LOGIN}
+      SWAGGER_PASSWORD: ${SWAGGER_PASSWORD}
+      API_KEY: ${API_KEY}
+      TEST_KEY: ${TEST_KEY}
+      HUGGING_FACE_TOKEN: ${HUGGING_FACE_TOKEN}
+
+volumes:
+  pgdata:
