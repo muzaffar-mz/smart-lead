@@ -15,7 +15,6 @@ spring:
       password: ${SWAGGER_PASSWORD}
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/smart-lead}
     username: ${POSTGRES_USER:postgres}
     password: ${POSTGRES_PASSWORD:postgres}
     hikari:
