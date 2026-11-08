@@ -5,7 +5,6 @@ import com.muzaffar.smartlead.domain.entity.UsageDetails;
 import com.muzaffar.smartlead.domain.entity.enums.CompletionStatus;
 import com.muzaffar.smartlead.domain.repository.HfCompletionRepository;
 import com.muzaffar.smartlead.exceptions.RateLimitInfo;
-import com.muzaffar.smartlead.service.completion.hgfacerest.HuggingFaceRateLimiter;
 import com.muzaffar.smartlead.service.completion.hgfacerest.model.RawLeadClassificationDTO;
 import com.muzaffar.smartlead.service.completion.hgfacerest.model.response.LeadClassificationResult;
 import com.muzaffar.smartlead.service.completion.hgfacerest.model.response.Usage;
@@ -61,8 +60,6 @@ public class HuggingFaceAiService {
 
     @Async("hfExecutor")
     public void processAsync(Long completionId) {
-        var list = new LinkedHashSet<String>();
-        list.
         try {
             if (!canSendRequests()) {
                 return;
