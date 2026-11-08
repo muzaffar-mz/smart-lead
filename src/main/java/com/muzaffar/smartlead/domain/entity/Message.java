@@ -1,7 +1,10 @@
 package com.muzaffar.smartlead.domain.entity;
 
 import jakarta.persistence.Column;
+import com.muzaffar.smartlead.domain.entity.enums.MessageStatus;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,4 +23,8 @@ public class Message extends BaseEntity {
 
     @Column(columnDefinition = "text")
     private String message;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private MessageStatus status = MessageStatus.CREATED;
 }

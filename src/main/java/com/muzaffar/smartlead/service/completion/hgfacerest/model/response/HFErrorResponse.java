@@ -1,4 +1,4 @@
-package com.muzaffar.smartlead.service.hgface.model.response;
+package com.muzaffar.smartlead.service.completion.hgfacerest.model.response;
 
 
 public record HFErrorResponse(

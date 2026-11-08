@@ -29,11 +29,13 @@ class CompletionServiceImplTest {
 
     @Mock
     private HfCompletionRepository completionRepository;
+    @Mock
+    private HuggingFaceAiService aiService;
     private CompletionService underTest;
 
     @BeforeEach
     void setUp() {
-        underTest = new CompletionService(completionRepository);
+        underTest = new CompletionService(completionRepository, aiService);
     }
 
     @Test

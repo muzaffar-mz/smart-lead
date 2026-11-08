@@ -21,4 +21,16 @@ public class AsyncConfig {
         executor.initialize();
         return executor;
     }
+
+
+    @Bean(name = "hfExecutor")
+    public Executor hfExecutor() {
+        var executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(1);
+        executor.setMaxPoolSize(1);
+        executor.setQueueCapacity(100);
+        executor.setThreadNamePrefix("hf-ai-");
+        executor.initialize();
+        return executor;
+    }
 }

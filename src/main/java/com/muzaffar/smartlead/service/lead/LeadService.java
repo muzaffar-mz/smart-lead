@@ -7,7 +7,7 @@ import com.muzaffar.smartlead.domain.entity.enums.LeadUrgency;
 import com.muzaffar.smartlead.domain.repository.LeadRepository;
 import com.muzaffar.smartlead.exceptions.NotFoundException;
 import com.muzaffar.smartlead.exceptions.enums.ErrorConstant;
-import com.muzaffar.smartlead.service.hgface.model.RawLeadClassificationDTO;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.RawLeadClassificationDTO;
 import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

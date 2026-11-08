@@ -1,4 +1,4 @@
-package com.muzaffar.smartlead.service.hgface.model.request;
+package com.muzaffar.smartlead.service.completion.hgfacerest.model.request;
 
 public record RequestMessage(
         String role,

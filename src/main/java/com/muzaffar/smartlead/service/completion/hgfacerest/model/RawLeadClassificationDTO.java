@@ -1,4 +1,4 @@
-package com.muzaffar.smartlead.service.hgface.model;
+package com.muzaffar.smartlead.service.completion.hgfacerest.model;
 
 import tools.jackson.databind.PropertyNamingStrategies;
 import tools.jackson.databind.annotation.JsonNaming;

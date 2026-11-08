@@ -1,4 +1,4 @@
-package com.muzaffar.smartlead.service.hgface;
+package com.muzaffar.smartlead.service.completion.hgfacerest;
 
 import com.muzaffar.smartlead.exceptions.RateLimitInfo;
 import lombok.extern.slf4j.Slf4j;

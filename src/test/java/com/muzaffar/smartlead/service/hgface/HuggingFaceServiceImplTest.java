@@ -6,14 +6,16 @@ import com.muzaffar.smartlead.domain.repository.HfCompletionRepository;
 import com.muzaffar.smartlead.exceptions.HFException;
 import com.muzaffar.smartlead.exceptions.RateLimitInfo;
 import com.muzaffar.smartlead.exceptions.enums.ErrorConstant;
-import com.muzaffar.smartlead.service.hgface.client.HuggingFaceClient;
-import com.muzaffar.smartlead.service.hgface.model.RawLeadClassificationDTO;
-import com.muzaffar.smartlead.service.hgface.model.request.CompletionRequest;
-import com.muzaffar.smartlead.service.hgface.model.response.Choice;
-import com.muzaffar.smartlead.service.hgface.model.response.CompletionResponse;
-import com.muzaffar.smartlead.service.hgface.model.response.HFErrorResponse;
-import com.muzaffar.smartlead.service.hgface.model.response.Message;
-import com.muzaffar.smartlead.service.hgface.model.response.Usage;
+import com.muzaffar.smartlead.service.completion.hgfacerest.HuggingFaceRateLimiter;
+import com.muzaffar.smartlead.service.completion.hgfacerest.HuggingFaceService;
+import com.muzaffar.smartlead.service.completion.hgfacerest.client.HuggingFaceClient;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.RawLeadClassificationDTO;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.request.CompletionRequest;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.response.Choice;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.response.CompletionResponse;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.response.HFErrorResponse;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.response.Message;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.response.Usage;
 import com.muzaffar.smartlead.service.lead.LeadService;
 import com.muzaffar.smartlead.service.message.MessageDTO;
 import org.junit.jupiter.api.BeforeEach;
@@ -75,7 +77,7 @@ class HuggingFaceServiceImplTest {
         var email = "john@acme.com";
         var ip = "10.0.0.1";
         var message = "Need a demo";
-        var dto = new MessageDTO(id, email, null, ip, message, LocalDateTime.now(), LocalDateTime.now());
+        var dto = new MessageDTO(id, email, null, ip, message, com.muzaffar.smartlead.domain.entity.enums.MessageStatus.CREATED, LocalDateTime.now(), LocalDateTime.now());
 
         //when
         underTest.submitMessageAsync(dto);
@@ -95,7 +97,7 @@ class HuggingFaceServiceImplTest {
         var email = "john@acme.com";
         var ip = "10.0.0.1";
         var message = "Need a demo";
-        var dto = new MessageDTO(id, email, null, ip, message, LocalDateTime.now(), LocalDateTime.now());
+        var dto = new MessageDTO(id, email, null, ip, message, com.muzaffar.smartlead.domain.entity.enums.MessageStatus.CREATED, LocalDateTime.now(), LocalDateTime.now());
 
         when(completionRepository.save(any())).thenThrow(new IllegalStateException("db down"));
 

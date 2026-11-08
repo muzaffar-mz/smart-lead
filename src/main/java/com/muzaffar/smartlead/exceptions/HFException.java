@@ -2,7 +2,7 @@ package com.muzaffar.smartlead.exceptions;
 
 
 import com.muzaffar.smartlead.exceptions.enums.ErrorConstant;
-import com.muzaffar.smartlead.service.hgface.model.response.HFErrorResponse;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.response.HFErrorResponse;
 import lombok.Getter;
 
 @Getter

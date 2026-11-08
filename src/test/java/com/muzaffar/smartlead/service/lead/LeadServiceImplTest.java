@@ -5,7 +5,7 @@ import com.muzaffar.smartlead.domain.entity.enums.LeadType;
 import com.muzaffar.smartlead.domain.entity.enums.LeadUrgency;
 import com.muzaffar.smartlead.domain.repository.LeadRepository;
 import com.muzaffar.smartlead.exceptions.NotFoundException;
-import com.muzaffar.smartlead.service.hgface.model.RawLeadClassificationDTO;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.RawLeadClassificationDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

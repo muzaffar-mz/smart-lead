@@ -1,6 +1,6 @@
-package com.muzaffar.smartlead.service.hgface.model.response;
+package com.muzaffar.smartlead.service.completion.hgfacerest.model.response;
 
-import com.muzaffar.smartlead.service.hgface.model.RawLeadClassificationDTO;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.RawLeadClassificationDTO;
 
 public record LeadClassificationResult(
         RawLeadClassificationDTO classification,

@@ -4,7 +4,7 @@ package com.muzaffar.smartlead.config;
 import com.muzaffar.smartlead.exceptions.HFException;
 import com.muzaffar.smartlead.exceptions.RateLimitInfo;
 import com.muzaffar.smartlead.exceptions.enums.ErrorConstant;
-import com.muzaffar.smartlead.service.hgface.model.response.HFErrorResponse;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.response.HFErrorResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpRequest;

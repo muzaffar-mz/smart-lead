@@ -1,8 +1,8 @@
-package com.muzaffar.smartlead.service.hgface.client;
+package com.muzaffar.smartlead.service.completion.hgfacerest.client;
 
 
-import com.muzaffar.smartlead.service.hgface.model.request.CompletionRequest;
-import com.muzaffar.smartlead.service.hgface.model.response.CompletionResponse;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.request.CompletionRequest;
+import com.muzaffar.smartlead.service.completion.hgfacerest.model.response.CompletionResponse;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.service.annotation.HttpExchange;
 import org.springframework.web.service.annotation.PostExchange;

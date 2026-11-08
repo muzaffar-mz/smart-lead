@@ -9,7 +9,7 @@ import com.muzaffar.smartlead.domain.entity.enums.LeadUrgency;
 import com.muzaffar.smartlead.domain.repository.HfCompletionRepository;
 import com.muzaffar.smartlead.domain.repository.LeadRepository;
 import com.muzaffar.smartlead.domain.repository.MessageRepository;
-import com.muzaffar.smartlead.service.hgface.client.HuggingFaceClient;
+import com.muzaffar.smartlead.service.completion.hgfacerest.client.HuggingFaceClient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;

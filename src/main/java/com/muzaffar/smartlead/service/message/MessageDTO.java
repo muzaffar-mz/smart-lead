@@ -1,6 +1,7 @@
 package com.muzaffar.smartlead.service.message;
 
 import com.muzaffar.smartlead.domain.entity.Message;
+import com.muzaffar.smartlead.domain.entity.enums.MessageStatus;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +11,7 @@ public record MessageDTO(
         String phone,
         String ip,
         String message,
+        MessageStatus status,
         LocalDateTime dateCreated,
         LocalDateTime dateUpdated
 ) {
@@ -21,6 +23,7 @@ public record MessageDTO(
                 entity.getPhone(),
                 entity.getIp(),
                 entity.getMessage(),
+                entity.getStatus(),
                 entity.getDateCreated(),
                 entity.getDateUpdated());
     }

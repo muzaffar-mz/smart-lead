@@ -2,9 +2,10 @@ package com.muzaffar.smartlead.service.message;
 
 import com.muzaffar.smartlead.domain.entity.Message;
 import com.muzaffar.smartlead.domain.repository.MessageRepository;
+import com.muzaffar.smartlead.domain.entity.enums.MessageStatus;
 import com.muzaffar.smartlead.exceptions.NotFoundException;
 import com.muzaffar.smartlead.model.request.MessageRequest;
-import com.muzaffar.smartlead.service.hgface.HuggingFaceService;
+import com.muzaffar.smartlead.service.completion.CompletionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,6 +23,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -31,13 +33,13 @@ class MessageServiceImplTest {
     @Mock
     private MessageRepository messageRepository;
     @Mock
-    private HuggingFaceService hfService;
+    private CompletionService completionService;
 
     private MessageService underTest;
 
     @BeforeEach
     void setUp() {
-        underTest = new MessageService(messageRepository, hfService);
+        underTest = new MessageService(messageRepository, completionService);
     }
 
     @Captor
@@ -124,12 +126,40 @@ class MessageServiceImplTest {
         underTest.createMessage(messageRequest, ip);
 
         //then
-        verify(hfService).submitMessageAsync(dtoCaptor.capture());
+        verify(completionService).submitMessage(dtoCaptor.capture());
         var capturedDTO = dtoCaptor.getValue();
         assertThat(capturedDTO.id()).isEqualTo(id);
         assertThat(capturedDTO.email()).isEqualTo(email);
         assertThat(capturedDTO.phone()).isNull();
         assertThat(capturedDTO.message()).isEqualTo(message);
+    }
+
+    @Test
+    void createMessageMarksMessageSubmittedWhenCompletionIsSubmitted() {
+        //given
+        stubSave(15L);
+        when(completionService.submitMessage(any())).thenReturn(true);
+
+        //when
+        underTest.createMessage(new MessageRequest("john@acme.com", "Need a demo"), "10.0.0.1");
+
+        //then
+        verify(messageRepository, times(2)).save(messageCaptor.capture());
+        assertThat(messageCaptor.getAllValues().getFirst().getStatus()).isEqualTo(MessageStatus.SUBMITTED);
+    }
+
+    @Test
+    void createMessageKeepsMessageCreatedWhenSubmissionFails() {
+        //given
+        stubSave(15L);
+        when(completionService.submitMessage(any())).thenReturn(false);
+
+        //when
+        underTest.createMessage(new MessageRequest("john@acme.com", "Need a demo"), "10.0.0.1");
+
+        //then
+        verify(messageRepository, times(1)).save(messageCaptor.capture());
+        assertThat(messageCaptor.getValue().getStatus()).isEqualTo(MessageStatus.CREATED);
     }
 
     @Test

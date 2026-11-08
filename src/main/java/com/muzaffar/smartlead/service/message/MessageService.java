@@ -3,10 +3,12 @@ package com.muzaffar.smartlead.service.message;
 
 import com.muzaffar.smartlead.domain.entity.Message;
 import com.muzaffar.smartlead.domain.repository.MessageRepository;
+import com.muzaffar.smartlead.domain.entity.enums.MessageStatus;
 import com.muzaffar.smartlead.exceptions.NotFoundException;
 import com.muzaffar.smartlead.exceptions.enums.ErrorConstant;
 import com.muzaffar.smartlead.model.request.MessageRequest;
-import com.muzaffar.smartlead.service.hgface.HuggingFaceService;
+import com.muzaffar.smartlead.service.completion.CompletionService;
+import com.muzaffar.smartlead.service.completion.HuggingFaceAiService;
 import com.muzaffar.smartlead.validation.ContactUtils;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.Expression;
@@ -26,7 +28,7 @@ import java.util.ArrayList;
 public class MessageService {
 
     private final MessageRepository messageRepository;
-    private final HuggingFaceService hfService;
+    private final CompletionService completionService;
 
     public void createMessage(MessageRequest request, String remoteAddr) {
         log.info("Creating message from ip: {}", remoteAddr);
@@ -42,7 +44,10 @@ public class MessageService {
         entity.setMessage(request.message());
         entity = messageRepository.save(entity);
 
-        hfService.submitMessageAsync(MessageDTO.from(entity));
+        if (completionService.submitMessage(MessageDTO.from(entity))) {
+            entity.setStatus(MessageStatus.SUBMITTED);
+            messageRepository.save(entity);
+        }
     }
 
     public MessageDTO get(Long id) {

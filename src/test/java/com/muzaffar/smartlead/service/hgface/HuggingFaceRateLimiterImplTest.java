@@ -1,6 +1,7 @@
 package com.muzaffar.smartlead.service.hgface;
 
 import com.muzaffar.smartlead.exceptions.RateLimitInfo;
+import com.muzaffar.smartlead.service.completion.hgfacerest.HuggingFaceRateLimiter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
