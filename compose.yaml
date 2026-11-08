@@ -22,9 +22,15 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      grafana-lgtm:
+        condition: service_started
     ports:
       - "7695:7695"
     environment:
+      # Inside Docker, localhost is the app container itself, so point OTLP at the collector service
+      MANAGEMENT_OTLP_METRICS_EXPORT_URL: http://grafana-lgtm:4318/v1/metrics
+      MANAGEMENT_OPENTELEMETRY_TRACING_EXPORT_OTLP_ENDPOINT: http://grafana-lgtm:4318/v1/traces
+      MANAGEMENT_OPENTELEMETRY_LOGGING_EXPORT_OTLP_ENDPOINT: http://grafana-lgtm:4318/v1/logs
       DATABASE_URL: jdbc:postgresql://db:5432/smart-lead
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -33,6 +39,13 @@ services:
       API_KEY: ${API_KEY}
       TEST_KEY: ${TEST_KEY}
       HUGGING_FACE_TOKEN: ${HUGGING_FACE_TOKEN}
+
+  grafana-lgtm:
+    image: 'grafana/otel-lgtm:latest'
+    ports:
+      - '3000:3000'
+      - '4317:4317'
+      - '4318:4318'
 
 volumes:
   pgdata:
